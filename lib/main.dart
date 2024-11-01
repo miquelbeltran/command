@@ -103,6 +103,10 @@ class Command extends ChangeNotifier {
   final Future<void> Function() _action;
 
   Future<void> execute() async {
+    if (_running) {
+      return;
+    }
+
     _running = true;
     _completed = false;
     _error = null;
